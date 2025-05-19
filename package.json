@@ -2,7 +2,7 @@
   "name": "node-cron",
   "type": "module",
   "version": "1.0.0",
-  "description": "",
+  "description": "cron",
   "main": "index.js",
   "scripts": {
     "dev": "tsc --watch",
