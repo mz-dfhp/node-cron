@@ -27,6 +27,25 @@ jobs:
           pnpm install --no-frozen-lockfile
           pnpm run build
 
+      - name: Verify environment variables
+        run: |
+          if [ -z "$DINGTALK_TOKEN" ]; then
+            echo "❌ DINGTALK_TOKEN is not set"
+            exit 1
+          else
+            echo "✅ DINGTALK_TOKEN is set"
+          fi
+
+          if [ -z "$DINGTALK_SECRET" ]; then
+            echo "❌ DINGTALK_SECRET is not set"
+            exit 1
+          else
+            echo "✅ DINGTALK_SECRET is set"
+          fi
+        env:
+          DINGTALK_TOKEN: ${{ secrets.DINGTALK_TOKEN }}
+          DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
+
       - name: Execute script
         run:  pnpm run schedule
         env:
