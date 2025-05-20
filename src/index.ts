@@ -2,8 +2,6 @@ import { createHmac } from "node:crypto";
 
 function notify() {
     function getWebhookUrl() {
-        console.log(process.env.DINGTALK_TOKEN);
-        console.log(process.env.DINGTALK_SECRET);
         const accessToken = process.env.DINGTALK_TOKEN; // access_token
         const secret = process.env.DINGTALK_TOKEN; // secret
         let webhookUrl = `https://oapi.dingtalk.com/robot/send?access_token=${accessToken}`;
