@@ -2,6 +2,8 @@ import { createHmac } from "node:crypto";
 
 function notify() {
     function getWebhookUrl() {
+        console.log(process.env.DINGTALK_TOKEN);
+        console.log(process.env.DINGTALK_SECRET);
         const accessToken = process.env.DINGTALK_TOKEN; // access_token
         const secret = process.env.DINGTALK_TOKEN; // secret
         let webhookUrl = `https://oapi.dingtalk.com/robot/send?access_token=${accessToken}`;
@@ -37,7 +39,8 @@ function notify() {
                     },
                 }),
             });
-            await res.json();
+            const data = await res.json();
+            console.log(data)
             console.log('发送成功');
         } catch (error) {
             console.error('发送失败：', error);
